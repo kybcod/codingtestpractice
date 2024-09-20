@@ -1,13 +1,12 @@
-a = int(input());
-b = int(input());
-c = int(input());
-
-if (a == b == c):
-    print("Equilateral")
-elif (a + b + c == 180):
-    if (a == b != c or a == c != b or b == c != a) :
-        print("Isosceles");
-    elif (a != b != c):
-        print("Scalene");
+a = int(input())
+b = int(input())
+c = int(input())
+if a+b+c == 180:
+    if a == b == c == 60:
+        print("Equilateral")
+    elif a == b or b == c or a == c:
+        print("Isosceles")
+    else:
+        print("Scalene")
 else:
     print("Error")
