@@ -1,2 +1,6 @@
 def solution(n):
-    return sum([int(i) for i in str(n)])
+    a = str(n);
+    sum = 0
+    for i in range(len(a)):
+        sum += int(a[i])
+    return sum
