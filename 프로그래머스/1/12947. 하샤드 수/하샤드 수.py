@@ -1,4 +1,7 @@
 def solution(x):
-    sum_ch = sum(int(i) for i in str(x))
-    answer = True
-    return True if x % sum_ch == 0 else False
+    n = [int(i) for i in str(x)]
+    n = sum(n)
+    if x % n == 0:
+        return (True)
+    else:
+        return (False)
