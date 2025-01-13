@@ -1,10 +1,4 @@
-from collections import Counter
 def solution(s):
+    return s.lower().count('p') == s.lower().count('y')
 
-    st = s.upper()
-    cnt = Counter(st)
-
-    if cnt["P"] == cnt["Y"]:
-        return True
-    else:
-        return False
+    
