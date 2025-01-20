@@ -1,12 +1,12 @@
 def solution(left, right):
-    result = 0
-    for i in range(left, right+1):
-        cnt = 0
-        for j in range(1,max(left, right)+1):
+    answer = 0
+    for i in range(left, right + 1):
+        count = 0 
+        for j in range(1, i + 1):
             if i % j == 0:
-                cnt += 1
-        if cnt % 2 == 0:
-            result += i
+                count += 1
+        if count % 2 == 0:
+            answer += i
         else:
-            result -= i
-    return result
+            answer -= i
+    return answer
