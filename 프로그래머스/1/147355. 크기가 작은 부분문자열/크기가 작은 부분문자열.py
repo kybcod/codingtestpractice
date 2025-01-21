@@ -1,6 +1,11 @@
 def solution(t, p):
-    answer = 0
-    for i in range(len(t)-len(p)+1):
-        if int(t[i:i+len(p)]) <= int(p):
-            answer += 1
-    return answer
+    cnt = 0
+    p_length = len(p)
+    p_value = int(p)
+
+    for i in range(len(t) - p_length + 1):
+        substring = int(t[i:i + p_length])
+        if substring <= p_value:
+            cnt += 1
+
+    return (cnt)
