@@ -1,7 +1,8 @@
 from itertools import combinations
 def solution(number):
-    cnt = 0
-    for i in combinations(number, 3):
-        if sum(i) == 0:
-            cnt += 1
-    return cnt
+    count = 0
+    # 3명을 선택하는 모든 조합을 생성
+    for comb in combinations(number, 3):
+        if sum(comb) == 0:  # 합이 0인지 확인
+            count += 1
+    return count
