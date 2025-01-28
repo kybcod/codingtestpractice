@@ -1,8 +1,5 @@
 def solution(food):
-    result = ''
-    answer = ''
-    for idx, count in enumerate(food[1:]):
-        result += str(idx+1) * (count//2)
-        
-    answer = result + str(food.index(1)) + result[::-1]
-    return answer
+    temp = '' # 왼쪽 선수 음식
+    for i in range(1, len(food)):
+        temp += str(i) * (food[i]//2)
+    return temp + '0' + temp[::-1]
