@@ -1,3 +1,3 @@
 def solution(strings, n):
-    answer = sorted(strings, key=lambda x: (x[n], x))
-    return answer
+    strings.sort()
+    return sorted(strings, key=lambda x: x[n])
