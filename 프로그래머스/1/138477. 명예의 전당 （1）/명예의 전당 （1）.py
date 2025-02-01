@@ -1,13 +1,12 @@
 def solution(k, score):
     answer = []
-    winner = []
-
+    a=[]
     for i in score:
-        if k > len(winner):
-            winner.append(i)
+        if len(a)<k:
+            a.append(i)
         else:
-            if i > min(winner): 
-                winner.remove(min(winner))
-                winner.append(i)        
-        answer.append(min(winner))
+            if min(a)<i:
+                a.remove(min(a))
+                a.append(i)
+        answer.append(min(a))
     return answer
