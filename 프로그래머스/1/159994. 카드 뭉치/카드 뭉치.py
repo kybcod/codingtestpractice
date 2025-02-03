@@ -1,16 +1,9 @@
 def solution(cards1, cards2, goal):
-    answer = []
-    n = len(cards1)
-    m = len(cards2)
-    
-    i = j = 0
     for word in goal:
-        if i < n and word == cards1[i]:
-            answer.append(cards1[i])
-            i += 1
-            
-        if j < m and word == cards2[j]:
-            answer.append(cards2[j])
-            j += 1
-        
-    return 'Yes' if answer == goal else 'No'
+        if cards1 and cards1[0] == word:  # cards1의 첫 번째 단어가 goal과 같으면 제거
+            cards1.pop(0)
+        elif cards2 and cards2[0] == word:  # cards2의 첫 번째 단어가 goal과 같으면 제거
+            cards2.pop(0)
+        else:  # 둘 다 아니면 만들 수 없는 경우
+            return "No"
+    return "Yes"
