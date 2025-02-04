@@ -1,29 +1,33 @@
 def solution(n, arr1, arr2):
-    bins1 = []
-    bins2 = []
-    result = []
+    arr1_2=[]
+    arr2_2=[]
+
+    #이진법 함수
+    def binary(a, n):
+        ternary = ""
+        while a > 0:
+            a, remaider = divmod(a, 2)
+            ternary += str(remaider)
+        return ternary[::-1].zfill(n)
+
+    # 1. 이진법으로 변경
+    for i in arr1:
+        arr1_2.append(binary(i, n))
+    for i in arr2:
+        arr2_2.append(binary(i, n))
+
+    # 2. arr1과 arr2를 합하기
+    sums = []
+    for i in range(len(arr1_2)):
+        sums.append("".join("1" if a == "1" or b == "1" else "0" for a, b in zip(arr1_2[i], arr2_2[i])))
+
+
+    # 2. 0은 공백, 1이상은 #으로 변경
     answer = []
-
-    for b in arr1:
-        bins = bin(b)[2:]
-        bins1.append(bins.zfill(n))
-
-    for b in arr2:
-        bins = bin(b)[2:]
-        bins2.append(bins.zfill(n))
-
-    # 둘 중 하나라도 벽이면 벽
-    # 모두 공백이면 공백
-    for i in range(len(bins1)):
-        bit1 = int(bins1[i],2)
-        bit2 = int(bins2[i],2)
-
-        max_bin = bin(bit1 | bit2)[2:].zfill(n)  # 두 이진수를 비트별로 OR 연산하여 최댓값 구함
-        temp_answer = ''
-        for bit in max_bin:
-            if bit == '1':
-                temp_answer += "#"
-            else:
-                temp_answer += " "
-        answer.append(temp_answer)
+    st = ""
+    for i in sums:
+        st = ""  # 문자열 초기화
+        for j in i:
+            st += "#" if j != "0" else " "  
+        answer.append(st)
     return answer
