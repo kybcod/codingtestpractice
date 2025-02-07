@@ -1,23 +1,22 @@
 def solution(answers):
-    result = []
-
-    person1 = [1, 2, 3, 4, 5] 
-    person2 = [2, 1, 2, 3, 2, 4, 2, 5]
-    person3 = [3, 3, 1, 1, 2, 2, 4, 4, 5, 5]
-
+    
+    answer = []
     score = [0,0,0]
-
-    # score 배열에 학생들 성적 넣기
-    for index, answer in enumerate(answers):
-        if answer == person1[index % len(person1)]:
+    
+    student1 = [1,2,3,4,5]
+    student2 = [2,1,2,3,2,4,2,5]
+    student3 = [3,3,1,1,2,2,4,4,5,5]
+    
+    for i in range(len(answers)) :
+        if answers[i] == student1[i%5] :
             score[0] += 1
-        if answer == person2[index % len(person2)]:
+        if answers[i] == student2[i%8] :
             score[1] += 1
-        if answer == person3[index % len(person3)]:
+        if answers[i] == student3[i%10] :
             score[2] += 1
-
-    for i,s in enumerate(score):
-        if s == max(score):
-            result.append(i+1)
-            
-    return result
+        
+    for idx, num in enumerate(score) :
+        if num == max(score) :
+            answer.append(idx +1)
+    
+    return answer
