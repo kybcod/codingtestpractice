@@ -1,14 +1,22 @@
+from fractions import Fraction
+
 def solution(N, stages):
-    answer = []
-    length = len(stages) # 전체 스테이지 도달자 수
+
+    fail = []  # 실패율 저장 리스트
+
+    # 각 스테이지별 실패율 계산
     for i in range(1, N+1):
-        cnt = stages.count(i) #유저 수
-        if length == 0:
-            failure_rate = 0 # 실패율 0
-        else: #유저수/전체도달자수
-            failure_rate = cnt / length
-        answer.append((i, failure_rate)) # (i, failure_rate) 튜플이 리스트에 추가
-        length -= cnt #이전 스테이지 도달자 수 - 현재 스테이지에 머무르고 있는 유저의 수 c
-    answer = sorted(answer, key=lambda x: x[1], reverse= True) # 실패율 기준으로 내림차순
-    answer = [i[0] for i in answer]
-    return answer
+        challengers = len([x for x in stages if x >= i])  # 해당 스테이지 이상 도달한 사용자 수
+        failures = stages.count(i)  # 해당 스테이지에서 멈춰 있는 사용자 수
+
+        if challengers == 0:  # 도달한 플레이어가 없으면 실패율 0
+            fail.append((i, Fraction(0)))  # (스테이지 번호, 실패율)
+        else:
+            fail.append((i, Fraction(failures, challengers)))  # (스테이지 번호, 실패율)
+
+    # 실패율 기준 내림차순 정렬 (실패율이 같으면 스테이지 번호 오름차순)
+    fail.sort(key=lambda x: x[1], reverse=True)
+
+    # 정렬된 스테이지 번호 리스트 출력
+    sorted_stages = [stage[0] for stage in fail]
+    return(sorted_stages) 
