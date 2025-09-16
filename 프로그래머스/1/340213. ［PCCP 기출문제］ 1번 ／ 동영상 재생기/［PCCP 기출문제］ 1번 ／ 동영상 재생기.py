@@ -15,7 +15,7 @@ def solution(video_len, pos, op_start, op_end, commands):
         # prev일 때 pos가 10초 이하이면 pos = 0 그렇지 않으면 -10
         if c == "prev":
             ps = 0 if ps < 10 else ps - 10
-        # next일 때 video_len - op_end가 10초 미만이면 pos는 video_len 그렇지 않으면 + 10
+        # next일 때 video_len - pos가 10초 미만이면 pos는 video_len 그렇지 않으면 + 10
         elif c == "next":
             ps = vl if vl - ps < 10 else ps + 10
 
