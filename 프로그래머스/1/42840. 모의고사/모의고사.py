@@ -1,22 +1,22 @@
 def solution(answers):
-    
     answer = []
-    score = [0,0,0]
     
-    student1 = [1,2,3,4,5]
-    student2 = [2,1,2,3,2,4,2,5]
-    student3 = [3,3,1,1,2,2,4,4,5,5]
+    p1 = [1, 2, 3, 4, 5]
+    p2 = [2, 1, 2, 3, 2, 4, 2, 5]
+    p3 = [3, 3, 1, 1, 2, 2, 4, 4, 5, 5]
     
-    for i in range(len(answers)) :
-        if answers[i] == student1[i%5] :
-            score[0] += 1
-        if answers[i] == student2[i%8] :
-            score[1] += 1
-        if answers[i] == student3[i%10] :
-            score[2] += 1
+    scores = [0,0,0]
+    
+    for idx, ans in enumerate(answers):
+        if ans == p1[idx % len(p1)]:
+            scores[0] += 1
+        if ans == p2[idx % len(p2)]:
+            scores[1] += 1
+        if ans == p3[idx % len(p3)]:
+            scores[2] += 1
+
+    for i, score in enumerate(scores):
+        if score == max(scores):
+            answer.append(i+1)
         
-    for idx, num in enumerate(score) :
-        if num == max(score) :
-            answer.append(idx +1)
-    
     return answer
