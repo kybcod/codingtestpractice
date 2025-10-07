@@ -1,8 +1,11 @@
-from itertools import combinations
 def solution(numbers):
-    sums = set()
+    answer = []
 
-    for i in combinations(numbers, 2):
-        sums.add(sum(i))
+    sum = 0
 
-    return sorted(sums)
+    for i in range(len(numbers)):
+        for j in range(i+1, len(numbers)):
+            sum = numbers[i] + numbers[j]
+            answer.append(sum)
+    
+    return sorted(list(set(answer)))
