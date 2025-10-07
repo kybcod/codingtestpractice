@@ -1,20 +1,19 @@
 from itertools import combinations
 
-#소수 찾기
-def is_Prime(n):
-    for j in range(2,n):
-        if n % j == 0:
-            return False
-    return True
-
-
 def solution(nums):
-    sums = [sum(i) for i in combinations(nums, 3)]
+    answer = []
+    combi = list(combinations(nums, 3))
     
-    answer = 0
-    for i in sums:
-        isPrime = is_Prime(i)
-        if isPrime:
-            answer += 1
+    for com in combi:
+        num = sum(com)
+        
+        is_prime = True
+        # 합이 소수인지 확인
+        for i in range(2, int(num ** 0.5) + 1):
+            if num % i == 0:
+                is_prime = False
+                
+        if is_prime:
+            answer.append(num)
 
-    return answer
+    return len(answer)
